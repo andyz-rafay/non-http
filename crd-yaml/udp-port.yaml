@@ -1,0 +1,8 @@
+apiVersion: "stable.rafay.co/v1"
+kind: RafayService
+metadata:
+  name: udp-service
+spec:
+  port-range: "2000-3000"
+  external-ip: "1.1.1.1"
+  pod-match: "myapp"
