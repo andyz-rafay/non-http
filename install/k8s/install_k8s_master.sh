@@ -42,6 +42,11 @@ taint_master()
 
 echo > $OUT
 
+
+do_cmd sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+do_cmd sudo apt update
+do_cmd sudo apt install -y kubeadm
+
 # Start k8s master
 do_cmd sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 setup_kubectl
