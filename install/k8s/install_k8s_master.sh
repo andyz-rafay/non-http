@@ -42,11 +42,18 @@ taint_master()
 
 echo > $OUT
 
+do_cmd sudo apt install ebtables ethtool socat curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+do_cmd sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 
-do_cmd sudo snap install kubeadm --classic
+do_cmd sudo apt install -y kubeadm=1.12.5-00 kubelet=1.12.5-00
+
+# Turn off swap
+do_cmd sudo swapoff -a 
 
 # Start k8s master
-do_cmd sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+do_cmd sudo kubeadm init --kubernetes-version 1.12.5 --ignore-preflight-errors=all --pod-network-cidr=10.244.0.0/16
+
 setup_kubectl
 
 taint_master
