@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+        name: ipvs-controller 
+spec:
+        serviceAccountName: ipvs-controller-sa
+        containers:
+        - name: ipvs-controller
+          image: registry.dev.rafay-edge.net:5000/azhou/ipvs-controller:andy-non-http
+        imagePullSecrets:
+        - name: rcloud-registry-creds 
+
