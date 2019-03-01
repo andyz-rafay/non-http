@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ipvs-controller
+  namespace: kube-system
+  labels:
+    k8s-app: ipvs-controller
+spec:
+  selector:
+    matchLabels:
+      name: ipvs-controller
+  template:
+    metadata:
+      labels:
+        name: ipvs-controller
+    spec:
+      containers:
+      - name: ipvs-controller
+        image: registry.dev.rafay-edge.net:5000/azhou/ipvs-controller:andy-non-http-20190228-1426 
+        securityContext:
+                capabilitis:
+                        add: [ "NET_ADMIN" ]
+
