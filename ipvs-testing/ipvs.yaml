@@ -7,6 +7,10 @@ spec:
         containers:
         - name: ipvs-controller
           image: registry.dev.rafay-edge.net:5000/azhou/ipvs-controller:andy-non-http
+          securityContext:
+                  capabilities:
+                        add: [ "NET_ADMIN", "SYS_TIME" ]
         imagePullSecrets:
         - name: rcloud-registry-creds 
+       
 
