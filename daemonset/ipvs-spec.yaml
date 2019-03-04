@@ -5,17 +5,17 @@ metadata:
 spec:
         name: "ipvs-workload-1"
         type: "l4port"
-        sevice:
+        portspec:
           lbtype: "RR"
-          nat: "on"
+          nat: 1
+          protocol: "udp"
           public:
-             protocol: "udp"
-             ipv4: "1.2.3.4"
+             ip: "1.2.3.4"
              port: "6666"
-          internal:
-             - pod1:
-                ipv4: "192.168.0.100"
-                port: 1234 
-             - pod2:
-                ipv4: "192.168.0.101"
-                port: 1234 
+          internals:
+                  - :
+                    ip: "192.168.0.100"
+                    port: 1234
+                  - :
+                    ip: "192.168.0.101"
+                    port: 1234
