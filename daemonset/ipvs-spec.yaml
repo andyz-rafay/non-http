@@ -7,15 +7,15 @@ spec:
         type: "l4port"
         portspec:
           lbtype: "RR"
-          nat: 1
+          nat: "yes"
           protocol: "udp"
           public:
              ip: "1.2.3.4"
-             port: "6666"
+             port: 6666
           internals:
-                  - :
+                  -:
                     ip: "192.168.0.100"
                     port: 1234
-                  - :
+                  -:
                     ip: "192.168.0.101"
-                    port: 1234
+                    port: 1235

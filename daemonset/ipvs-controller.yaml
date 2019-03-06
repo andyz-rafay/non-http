@@ -14,9 +14,10 @@ spec:
       labels:
         name: ipvs-controller
     spec:
+      hostNetwork: true
       containers:
       - name: ipvs-controller
-        image: registry.dev.rafay-edge.net:5000/azhou/ipvs-controller:andy-non-http-20190301-1412
+        image: registry.dev.rafay-edge.net:5000/azhou/ipvs-controller:master-20190305-1648
         securityContext:
                 capabilities:
                         add: [ "NET_ADMIN" ]
