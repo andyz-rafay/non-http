@@ -5,7 +5,7 @@ metadata:
   labels:
     app: udp-server
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     app: udp-server
   template:

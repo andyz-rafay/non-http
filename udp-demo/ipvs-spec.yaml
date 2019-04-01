@@ -1,0 +1,14 @@
+apiVersion: "ipvscontroller.rep.net/v1"
+kind: Ipvs
+metadata:
+        name: ipvs-rule
+spec:
+        ingressType: "L4Port"
+        namespace: "default"
+        portspec:
+          lbmode: "RR"
+          nat: "yes"
+          protocol: "udp"
+          public:
+             ip: "1.2.3.4"
+             port: 7778

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ipvs-controller
+  namespace: kube-system
+  labels:
+    k8s-app: ipvs-controller
+spec:
+  selector:
+    matchLabels:
+      name: ipvs-controller
+  template:
+    metadata:
+      labels:
+        name: ipvs-controller
+    spec:
+      serviceAccountName: ipvs-controller-sa
+      hostNetwork: true
+      containers:
+      - name: ipvs-controller
+        image: ipvs-controller
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: lib-modules
+          mountPath: /lib/modules
+          readOnly: true
+        securityContext:
+                capabilities:
+                        add: [ "SYS_ADMIN", "NET_ADMIN" ]
+      volumes:
+      - name: lib-modules
+        hostPath:
+           path: /lib/modules
+
