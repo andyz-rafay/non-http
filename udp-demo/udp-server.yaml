@@ -1,24 +1,23 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: busybox0
+  name: udp-server
   labels:
-    app: busybox0
+    app: udp-server
 spec:
   replicas: 1
   selector:
-    app: busybox0
+    app: udp-server
   template:
     metadata:
-      name: busybox0
+      name: udp-server
       labels:
-        app: busybox0
+        app: udp-server
     spec:
       containers:
-      - image: busybox
+      - image: rafay-udp-server
         command:
-          - sleep
-          - "3600"
+          - ./rafay-udp-server
         imagePullPolicy: IfNotPresent
-        name: busybox
+        name: rafy-udp-server
       restartPolicy: Always

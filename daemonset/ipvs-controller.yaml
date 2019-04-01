@@ -17,7 +17,7 @@ spec:
       hostNetwork: true
       containers:
       - name: ipvs-controller
-        image: registry.dev.rafay-edge.net:5000/azhou/ipvs-controller:master-20190305-2058
+        image: registry.dev.rafay-edge.net:5000/azhou/ipvs-controller:master-20190306-0136
         volumeMounts:
         - name: lib-modules
           mountPath: /lib/modules
